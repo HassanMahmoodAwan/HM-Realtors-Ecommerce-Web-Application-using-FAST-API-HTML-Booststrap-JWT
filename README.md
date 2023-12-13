@@ -5,5 +5,6 @@
 1. develop backend with rest API
 - - CART
 - - CURD
-- - Authentication and authorization
+- - Password Hashing
+- - Authentication and authorization(JWT)
 - - menu
