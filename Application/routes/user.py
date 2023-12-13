@@ -9,16 +9,23 @@ router = APIRouter(
     tags=['Users']
 )
 
+
 # === All Users ===
 @router.get('/', status_code= 200)
 def all_users(db: Session = Depends(Database.get_db)):
     all_users = db.query(Models.User).all()
     return all_users
 
+
 # === User at ID ===
 @router.get('/{ID}', status_code=200)
-def get_user(ID):
-    return f'User of ID {id}'
+def get_user(ID, db: Session = Depends(Database.get_db)):
+    user = db.query(Models.User).filter(Models.User.ID == ID).first()
+    if not user:
+        raise HTTPException(status_code=404, detail=f"User with ID {ID} not found")
+    return user
+   
+
     
 # === Register new User ===    
 @router.post('/', status_code= 201)

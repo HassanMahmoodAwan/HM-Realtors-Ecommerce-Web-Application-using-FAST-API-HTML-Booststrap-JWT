@@ -14,3 +14,16 @@ class User(Base):
     Last_Name = Column(String)
     Email = Column(String)
     Password = Column(String)
+    
+    
+class Product(Base):
+    __tablename__ = 'Create Product'
+
+    ID = Column(Integer, primary_key=True, index=True)
+    Name = Column(String)
+    Brand = Column(String)
+    Category = Column(String)
+    Qty = Column(Integer)
+    Price = Column(Float)
+    M_date = Column(String)
+    E_date = Column(String)
