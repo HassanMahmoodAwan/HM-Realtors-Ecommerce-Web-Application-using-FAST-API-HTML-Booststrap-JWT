@@ -23,3 +23,10 @@ def get_product(id):
 
 
 # === Add Product in Inventory ===
+@router.post('/', status_code= 201)
+def add_product(request: Schema.Product, db: Session = Depends(Database.get_db)):
+    new_product = Models.Product(Name = request.Name, Brand = request.Brand, Category = request.Category, Qty = request.Qty, Price = request.Price, M_date = request.M_date,  E_date = request.E_date)
+    db.add(new_product)
+    db.commit()
+    db.refresh(new_product)
+    return 'New Product Added'
