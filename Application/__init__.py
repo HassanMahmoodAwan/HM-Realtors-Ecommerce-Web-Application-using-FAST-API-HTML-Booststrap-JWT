@@ -1,1 +1,1 @@
-import Schema, Database, Models
+import Schema, Database, Models, Hashing
