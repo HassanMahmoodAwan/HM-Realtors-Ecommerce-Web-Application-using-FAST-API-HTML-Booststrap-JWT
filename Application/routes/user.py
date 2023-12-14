@@ -50,3 +50,23 @@ def delete_user(ID, db: Session = Depends(Database.get_db)):
     user.delete(synchronize_session = False)
     db.commit()
     return f'User with ID: {ID} Deleted'
+
+
+# === Update User Information ===
+"""
+    - Need to Update after user need to login, Solution JWT
+    - Hash updated Password
+    - Send Email to Verify the Password
+"""
+
+# @router.put('/{ID}', status_code=202)
+# def update_user(ID, request: Schema.User, db: Session = Depends(Database.get_db)):
+#     user = db.query(Models.User).filter(Models.User.ID == ID)
+    
+#     if not user.first():
+#         raise HTTPException(status_code=404, 
+#         detail=f'User with {ID} did not Exist')
+    
+#     user.update({}, synchronize_session = False)
+#     db.commit()
+#     return f'User with ID: {ID} Deleted'
